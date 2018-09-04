@@ -1,29 +1,27 @@
-# r-start-gmds-hsos
+# R für Einsteiger
 
-Dieses Repository enthält die Daten zum R-Tutorial auf der GMDS 2018 in Osnabrück.
+Dieses Repository enthält die Daten zum R-Tutorial auf der GMDS 2018 in Osnabrück am 6.09.2018.
 
-# Beschreibung
+# Vor dem Tutorium
 
-Das R-Tutorial ist für Einsteiger in die statististische Programmierung konzipiert. 
-Aber auch Wiedereinsteiger oder Anwender sind herzlich eingeladen.
+Für die Teilnahme am Tutorium führen Sie bitte folgende Schritte vor der Veranstaltung durch:
 
-Das Tutorium hat zwei Schwerpunkte.
-Zum einen werden die Grundlagen von R vermittelt. 
-Dabei werden folgende Fragen beantwortet:
-Wie kann ich mit R arbeiten?
-Mit welchen Datentypen arbeitet R?
-Welche Datenstrukturen existieren in R?
-Wie können Daten in R importiert werden und zur Statistischen Analyse, v.a. zur deskriptiven Statistik verwendet werden. 
+1. Für die Teilnahme benötigen die Teilnehmer R und die Entwicklungsumgebung R-Studio. 
+Beide Programme sind Open-Source Produkte und daher kostenlos erhältich.
+Bitte installieren Sie beide Programme auf Ihrem Rechner.
+Installieren Sie zunächst R. 
+Die aktuelle R Version kann auf der offiziellen R-Website heruntergeladen werden (http://www.r-project.org).
+Danach installieren sie RStudio, welches unter der Open Source Lizenz kostenlos zur Verfügung steht (https://www.rstudio.com/products/rstudio/download/).
+Starten Sie R-Studio, um sicherzustellen, dass die Software funktioniert.
 
-Der zweite Schwerpunkt ist der Umgang mit sogenannten Data.Frames, einer der zentralen Datenstrukturen in R um Datensätze zu verwenden. 
+2. Nach der Installation laden Sie zusätzlich aus dem dazugehörigen Github Repository unter folgenden Link herunter: https://github.com/jnshsrs/gmds18-tutorium-rstats
+Wenn Sie mit Git vertraut sind können sie das Repository über die Kommandozeile clonen.
+Andernfalls laden Sie die Daten auf Ihrem Computer herunter. Sie finden den grünen Download Button auf der rechten Seite des Repositories.
+Entpacken Sie die Daten nach dem Download in einen Ordner.
 
+Bitte wenden Sie sich bei Fragen an j.huesers@hs-osnabrueck.de.
 
-Entlang des Tutoriums werden die Vor- und Nachteile von R im Vergleich zu anderen statistischen Software Paketen vorgestellt.
-
-Am Ende des Tutoriums ist der 
-
-
-#  Alternative Beschreibung
+# Beschreibung Tutorium
 
 In diesem R Tutorial wird die Programmiersprache R vorgestellt.
 

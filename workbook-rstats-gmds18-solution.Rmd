@@ -4,7 +4,7 @@ author: "Jens Hüsers"
 date: "Donnerstag 6.9.2018"
 output:
   html_document:
-    css: css/styles.css
+    css: css/style-workbook.css
     df_print: tibble
     toc: yes
   pdf_document:
@@ -605,6 +605,7 @@ titanic %>%
 <hr>
 ![](img/tut1-r-decision-tree.png)
 ```{r}
+
 titanic <- read.csv("data/titanic.csv")
 
 titanic %>% 
@@ -623,8 +624,6 @@ train <- titanic %>% select(survived, sex, age, pclass)
 decision_tree <- rpart(survived ~ .,
                  data = train,
                  method ="class")
-
-
 
 fancyRpartPlot(decision_tree, main = "", sub = "Welche Personen haben den Titanic-Untergang überlebt?")
 

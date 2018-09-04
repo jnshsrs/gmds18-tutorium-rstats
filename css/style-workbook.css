@@ -1,0 +1,88 @@
+hr.style13 {
+		heitght: 10px;
+			border: 0;
+			box-shadow: 0 10px 10px -10px #8c8b8b inset;
+			}
+h1 {
+	    padding-top: 2%;
+	    font-weight:bold;
+    }
+
+h2 {
+	    padding-top: 1%;
+    }
+
+
+h1.title {
+	        font-family: times, Times New Roman, times-roman, georgia, serif;
+		 color: #444;
+		  margin: 0;
+		   padding: 30px 0px 6px 0px;
+		    font-size: 51px;
+		     line-height: 44px;
+		      letter-spacing: -2px;
+		       font-weight: bold;
+
+}
+h4.author, h4.date, h3.subtitle{
+	 
+	 font-family: Gill Sans, Verdana;
+	  font-size: 16px;
+	   line-height: 14px;
+	    text-transform: uppercase;
+	     letter-spacing: 2px;
+	      font-weight: bold;
+
+}
+
+div.task {
+	font-size: 16px;
+	background-color: #e6f2ff;
+	border-left: 6px solid rgba(28,110,164,0.47);
+	border-top: 10px;
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 5%;
+	margin-top: 5%;
+
+   }
+
+div.task pre {
+	margin-right: 10px;
+}	
+
+.figure {
+   float: center;
+       text-align: center;
+	 font-style: italic;
+	   font-size: smaller;
+	     text-indent: 0;
+		 margin: 0.5em;
+		   padding: 0.5em;
+}
+
+/* Three image containers (use 25% for four, and 50% for two, etc) */
+.column {
+  float: left;
+  width: 50%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
+
+h4 {
+  font-weight:bold;
+  font-family:Open Sans;
+  padding-left: 5px;
+  font-size:30px;
+}
+
+div.example {
+  border-left: 6px solid rgba(28,110,164,0.47);
+}
