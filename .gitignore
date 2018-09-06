@@ -38,12 +38,6 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 
-# images
-*.jpg
-*.jpeg
-*.tiff
-*.tif
-
 # documents
 *.pdf
 *.docx
