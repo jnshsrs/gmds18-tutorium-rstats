@@ -1,10 +1,9 @@
 ---
 title: "Der Einstieg in die Programmiersprache R"
 author: "Jens Hüsers"
-date: "Donnerstag 6.9.2018"
+date: '2018-09-06'
 output:
-  html_document:
-    keep_md: TRUE
+  github_document:
     css: css/style-workbook.css
     df_print: tibble
     toc: yes
@@ -13,14 +12,22 @@ output:
 subtitle: Tutorial auf der 63. Jahrestagung der GMDS e.V. in Osnabrück
 editor_options:
   chunk_output_type: console
-description: "My tutorial on 'Introduction in R' at the 63rd Annual Conference of the GMDS e.V."
+description: "My tutorial on 'Introduction in R' at the 63rd Annual Conference of the GMDS e.V. on Sep. 6th 2018."
 ---
+
+<script src="//yihui.name/js/math-code.js"></script>
+<!-- Just one possible MathJax CDN below. You may use others. -->
+<script async
+  src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warnings = FALSE, message = FALSE, eval = TRUE, cache = FALSE, fig.align = 'center')
 ```
 
 # Preface
+
+Dieser Post enthält das Skript sowie die Aufgaben inklusive Lösungen meines Tutoriums "Einstieg in die Programmiersprache R" auf der 63. Jahrestagung der GMDS e.V. in Osnabrück am 6.9.2018. Das Skript mit den Aufgaben ohne Lösungen sind in der Datei `workbook-rstats-gmds18-aufgaben.Rmd` auf [Github](https://github.com/jnshsrs/gmds18-tutorium-rstats "Github Repository") verfügbar.
 
 ## Installation
 
@@ -190,7 +197,7 @@ print(temperaturen_fahrenheit)
 
 # Kapitel 2 - Funktionen
 
-![Syntaktische Aufbau einer Funktion in R](img/tut1-r-function.png)
+![Syntaktische Aufbau einer Funktion in R](/img/tut1-r-function.png)
 
 ## Anwendungsbeispiel Mittelwert
 
@@ -249,7 +256,7 @@ standardabweichung(temperaturen)
 
 <div class="task">
 
-## Aufgabe
+**Aufgabe**
 
 Recherchiere bei Google die Temperaturen der kommenden Tage für Moskau und Los Angeles.
 Es werden bei Google das Wetter für den aktuellen Tag und der folgenden Woche angegeben.
@@ -358,8 +365,8 @@ temperaturen$temperaturen_kairo <- c(36, 35, 37, 37, 36, 35, 34, 34)
 
 ## Importieren eines Datensatzes
 
-![](img/tut1-r-csv-rows.png){width=45%}
-![](img/tut1-r-csv-columns.png){width=45%}
+![](/img/tut1-r-csv-rows.png){width=45%}
+![](/img/tut1-r-csv-columns.png){width=45%}
 
 Der Datensatz, in R als `data.frame` bezeichnet, ist eine zentrale Datenstruktur, die bei Datenanalysen zum Einsatz kommt.
 Viele Datensätze sind so formatiert, dass sie direkt in R importiert werden können. 
@@ -370,7 +377,7 @@ Mit Hilfe der Funktion `read.csv` können Dateien im CSV-Format in R eingelesen 
 
 Wir verwenden in diesem Tutorial den [Titanic Datensatz](https://www.kaggle.com/c/titanic).
 
-![Headline of THE NEW YORK HERALD 15th of April 1912](img/titanic-new-york-herald.jpeg)
+![Headline of THE NEW YORK HERALD 15th of April 1912](/img/titanic-new-york-herald.jpeg)
 
 ```{r}
 
@@ -504,7 +511,7 @@ Fast alle Funktionen im tidyverse erwarten einen `data.frame` als Funktionsinput
 
 Die fünf zentralen Funktionen sind Verben, die ausdrücken, was die jeweilige Funktion "tut".
 
-![Auswahl wichtiger dplyr-Funktionen](img/tut1-r-dplyr-functions.png)
+![Auswahl wichtiger dplyr-Funktionen](/img/tut1-r-dplyr-functions.png)
 
 
 #### Beispiele
@@ -695,9 +702,9 @@ titanic %>%
   spread(key = name, value = value)
 ```
 
-![](img/tut1-example-plot.png)
+![](/img/tut1-example-plot.png)
 <hr>
-![](img/tut1-r-decision-tree.png)
+![](/img/tut1-r-decision-tree.png)
 
 ```{r}
 library(rpart) # Paket mit dem Entscheidungsbäume erstellt werden können
