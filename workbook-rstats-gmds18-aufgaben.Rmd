@@ -178,7 +178,7 @@ Dazu muss die Temperatur in Celsius mit 5/9 multipliziert und zu dieser Größe 
 
 ```{r task}
 
-temperaturen_fahrenheit <- temperaturen * 5/9 + 32
+temperaturen_fahrenheit <- ???
 print(temperaturen_fahrenheit)
 
 ```
@@ -228,15 +228,7 @@ Je größer die Standardabweichung desto wahrscheinlich sind Datenpunkte, die ei
 source("code/temperaturen.R")
 # Standardabweichung
 standardabweichung <- function(x) {
-  # Anzahl der Beobachtungen der Variablen
-  n <- length(x)
-  # Berechnung des Mittelwerts (die vorher definierte Funktion)
-  mw <- mittelwert(x)
-  # Berechnen der Summe der Abweichungsquadrate (saq)
-  saq <- sum((x - mw)^2)
-  # Berechnung der Standardabweichung
-  stabw <- sqrt((1 / (n - 1)) * saq)
-  return(stabw)
+  ???
 }
 
 standardabweichung(temperaturen) 
@@ -264,9 +256,9 @@ In welcher Stadt ist besseres Wetter, wo ist das Wetter konstanter?
 ```{r, eval=T}
 
 wettervorhersage <- function(x) {
-  min_temp <- min(x)
-  max_temp <- max(x)
-  stabw <- standardabweichung(x)
+  
+  ???
+    
   vorhersage <- paste0("Die geringste Temperatur ist: ", min_temp, " und die höchste Temperatur ", max_temp, " Grad Celsius.")
   konstant <- paste0("Die Temperaturschwankung (gemessen durch die Standardabweichung) beträgt ", round(stabw, 2), " Grad Celsius.")
   print(vorhersage)
@@ -414,18 +406,17 @@ Wenn nur eine Spalte ausgewählt wird, ist das Ergebnis ein Vektor**
 
 ```{r}
 # Anzahl unter 18-jähriger Passagiere
-nrow(titanic[titanic$age < 18, ])
-
+???
+  
 # Durchschnittlicher Alter Herren
-mean(titanic$age[titanic$sex == "male"], na.rm = TRUE)
+???
 # Durchschnittliches Alter Damen
-mean(titanic$age[titanic$sex == "female"], na.rm = TRUE)
+???
 
 # Durchschnittliche Ticketpreis
-mean(titanic$fare, na.rm = TRUE)
+???
 
 ```
-
 
 </div>
 
@@ -477,17 +468,19 @@ Berechnen Sie den Mittelwert des Alters und vergleichen Sie die Ergebnisse.
 
 ```{r}
 # einlesen des SPSS Datensatzes mit dem haven Paket
-titanic_sav <- haven::read_sav(file = "data/titanic.sav")
+???
+  
+  
 head(titanic_sav) # ersten sechs Zeilen des Datensatzes
 summary(titanic_sav) # Zusammenfassung des Datensatzes
 
 # einlesen des Excel Datensatzes
-titanic_xlsx <- readxl::read_xlsx("data/titanic.xlsx")
+???
 
 # Berechnen der Mittelwerte des Alters in der Spalte `age`  
 mean(titanic$age, na.rm = TRUE)
-mean(titanic_sav$age, na.rm = TRUE)
-mean(titanic_xlsx$age, na.rm = TRUE)
+???
+???
 
 ```
 
@@ -541,8 +534,8 @@ Geben Sie den Namen und den Fahrpreis in der finale Tablle aus.
 ```{r}
 titanic %>% 
   select(name, fare) %>% 
-  arrange(desc(fare)) %>% 
-  head(n = 10)
+  ??? %>% 
+  ???
 
 ```
 
@@ -581,8 +574,7 @@ Was ist der durchschnittliche Fahrpreis und die jeweilige Streuung für die jewe
 
 ```{r}
 titanic %>% 
-  group_by(pclass) %>% 
-  summarise(durchschnittl_fahrpreis = mean(fare, na.rm = TRUE))
+  ???
  
 ```
 </div>
@@ -598,10 +590,7 @@ Finden sie heraus, ob diese Schlagzeile aus den Daten nachvollziehbar ist, indem
 ```{r}
 
 titanic %>%  
-  group_by(survived, sex) %>%  
-  summarise(n = n()) %>%  
-  ungroup() %>%  
-  mutate(prop = n / sum(n)) 
+  ???
 
 ```
 
@@ -619,14 +608,11 @@ Die Informationen ob und in welches Rettungsboot ein Gast bestieg ist in der Spa
 ```{r}
 # auslastung pro boot 
 auslastung_pro_boot <- titanic %>%  
-  filter(!is.na(boat)) %>%  
-  group_by(boat) %>%  
-  summarise(n = n()) %>%  
-  mutate(auslastung = n / 65) 
-   
+  ???
+  
 # auslastung aller boote 
 auslastung_aller_boote <- auslastung_pro_boot %>%  
-  summarise(auslastung = mean(auslastung)) 
+  ???
  
 print(auslastung_pro_boot) 
 print(auslastung_aller_boote) 
