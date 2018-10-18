@@ -16,9 +16,7 @@ editor_options:
 description: "My tutorial on 'Introduction in R' at the 63rd Annual Conference of the GMDS e.V."
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warnings = FALSE, message = FALSE, eval = TRUE, cache = FALSE, fig.align = 'center')
-```
+
 
 # Preface
 
@@ -100,7 +98,8 @@ Da R Methoden für das objekt-orientierte Programmieren anbietet, können auch e
 
 Wir können mathematische Operationen mit der R-Konsole berechen.
 
-```{r, eval = FALSE}
+
+```r
 1 + 1 # 2
 1 - 1 # 0
 2 * 4 # 8
@@ -110,7 +109,6 @@ Wir können mathematische Operationen mit der R-Konsole berechen.
 1 / 1  + 2
 sqrt(9) + 3
 sqrt(2)^2
-
 ```
 
 In R ist es üblich Ergebnisse in einer Variable zu speichern.
@@ -128,7 +126,8 @@ R beachtet dabei Rechenregeln wie beispielsweise das Kommutativgesetzt oder das 
 
 Durchschnittlich Temperaturen in den kommenden sieben Tagen.
 
-```{r vektoren-funktionen}
+
+```r
 # Erstellen eines Vektors
 # Temperatur
 # Daten aus Goolge https://www.google.com/search?q=google+wetter&ie=utf-8&oe=utf-8&client=firefox-b-ab 
@@ -139,9 +138,21 @@ temperaturen <- c(27, 27, 22, 24, 13, 13, 13, 12)
 max_temp <- max(temperaturen)
 min_temp <- min(temperaturen)
 paste("Der wärmste Tag wird", max_temp, "Grad Celsius warm. Die kälteste", min_temp, "Grad Celsius.")
+```
 
+```
+## [1] "Der wärmste Tag wird 27 Grad Celsius warm. Die kälteste 12 Grad Celsius."
+```
+
+```r
 median(temperaturen) # Berechnen des Medians
+```
 
+```
+## [1] 17.5
+```
+
+```r
 # Extra Informationen: 
 # Da der Median das 50% Quantil ist, kann dieser auch durch die Funktion `quantile` berechnet werden
 # Diese Funktion erwartet zwei Argumente:
@@ -149,7 +160,11 @@ median(temperaturen) # Berechnen des Medians
 # Zudem einen Vektor der die zu berechnenden Quantile beinhaltet
 # Nähere Informationen durch `?quantile`
 quantile(x = temperaturen, probs = c(.5)) # Das zweite Argument enthalt nur einen Wert (.5), da wir ausschließlich den Median errechnen möchten
+```
 
+```
+##  50% 
+## 17.5
 ```
 
 ## Eigenschaften von Vektoren
@@ -159,14 +174,18 @@ quantile(x = temperaturen, probs = c(.5)) # Das zweite Argument enthalt nur eine
 
 Beispiele für vektorisierte Operationen
 
-```{r}
+
+```r
 # Messgerät unterschätzt jede Messung um einen Grad
 temperaturen_unbiased <- temperaturen + 1
 
 # Messgerät ist falsch kalibriert und überschätzt mit steigender Temperatur 
 # die tatsächliche Temperatur (um 10%)
 temperaturen * .9
+```
 
+```
+## [1] 24.3 24.3 19.8 21.6 11.7 11.7 11.7 10.8
 ```
 
 <div class="task">
@@ -177,11 +196,14 @@ Rechne die Temperaturen die im Vektor *temperaturen* gespeichert sind in die Ein
 
 Dazu muss die Temperatur in Celsius mit 5/9 multipliziert und zu dieser Größe 32 addiert werden.
 
-```{r task}
 
+```r
 temperaturen_fahrenheit <- temperaturen * 5/9 + 32
 print(temperaturen_fahrenheit)
+```
 
+```
+## [1] 47.00000 47.00000 44.22222 45.33333 39.22222 39.22222 39.22222 38.66667
 ```
 
 </p>
@@ -194,15 +216,14 @@ print(temperaturen_fahrenheit)
 
 ## Anwendungsbeispiel Mittelwert
 
-```{r funktionen-definieren}
 
+```r
 # Mittelwert
 mittelwert <- function(x) {
   n <- length(x) 
   sum_x <- sum(x)
   sum_x / n
 }
-
 ```
 
 <div class="task">
@@ -224,8 +245,8 @@ Folgende Funktionen sind nützlich für die Erstellung dieser Funktion:
 Die (empirische) Standardabweichung beschreibt die Streuung einer Zufallsvariable.
 Je größer die Standardabweichung desto wahrscheinlich sind Datenpunkte, die eine höhere Distanz zum Mittelwert haben.
 
-```{r funktionen-schreiben}
 
+```r
 source("code/temperaturen.R")
 # Standardabweichung
 standardabweichung <- function(x) {
@@ -241,8 +262,14 @@ standardabweichung <- function(x) {
 }
 
 standardabweichung(temperaturen) 
-# Je kleiner die Standardabweichung, desto konstanter ist das Wetter in diesen Acht Tagen
+```
 
+```
+## [1] 6.749339
+```
+
+```r
+# Je kleiner die Standardabweichung, desto konstanter ist das Wetter in diesen Acht Tagen
 ```
 
 </div>
@@ -262,8 +289,8 @@ Die Funktion soll die kleinste und die höchste Temperatur berechnen sowie die S
 
 In welcher Stadt ist besseres Wetter, wo ist das Wetter konstanter?
 
-```{r, eval=T}
 
+```r
 wettervorhersage <- function(x) {
   min_temp <- min(x)
   max_temp <- max(x)
@@ -278,8 +305,20 @@ los_angeles <- c(29, 31, 31, 28, 26, 26, 26, 26)
 moskau <- c(19, 18, 10, 9, 9, 9, 8, 8)
   
 wettervorhersage(los_angeles)
+```
+
+```
+## [1] "Die geringste Temperatur ist: 26 und die höchste Temperatur 31 Grad Celsius."
+## [1] "Die Temperaturschwankung (gemessen durch die Standardabweichung) beträgt 2.23 Grad Celsius."
+```
+
+```r
 wettervorhersage(moskau)
-  
+```
+
+```
+## [1] "Die geringste Temperatur ist: 8 und die höchste Temperatur 19 Grad Celsius."
+## [1] "Die Temperaturschwankung (gemessen durch die Standardabweichung) beträgt 4.53 Grad Celsius."
 ```
 
 </div>
@@ -293,11 +332,18 @@ Ist eine Sammlung verschiedener Datentypen.
 
 Erstellen von Listen durch die Funktion `list()`.
 
-```{r}
+
+```r
 # In einem Vektor müssen die Elemente den gleichen Datentyp haben
 # Welcher Datentyp besitzt der folgende Vektor?
 c("A", 2)
+```
 
+```
+## [1] "A" "2"
+```
+
+```r
 # Die Liste muss nicht die selben Datentypen beinhalten (in Gegensatz zu einem Vektor)
 # Beispielliste mit zwei Einträgen
 beispielliste <- list(1, "B")
@@ -309,7 +355,16 @@ temperaturen_liste <- list(temperaturen_la, temperaturen_moskau)
 # Und wem das nicht genug ist, der speichert einfach eine Liste in einer Liste ;)
 sinnlosse_beispielliste <- list(beispielliste, standardabweichung)
 str(sinnlosse_beispielliste)
+```
 
+```
+## List of 2
+##  $ :List of 2
+##   ..$ : num 1
+##   ..$ : chr "B"
+##  $ :function (x)  
+##   ..- attr(*, "srcref")= 'srcref' int [1:8] 4 23 14 1 23 1 4 14
+##   .. ..- attr(*, "srcfile")=Classes 'srcfilecopy', 'srcfile' <environment: 0x7fbcd8d89af8>
 ```
 
 ## Datensatz aka data.frame 
@@ -317,19 +372,82 @@ str(sinnlosse_beispielliste)
 Der `data.frame`ist eine besondere Form der Liste.
 Er enthält $j$ Vektoren der selben Länge $n$.
 
-```{r}
+
+```r
 temperaturen <- data.frame(temperaturen_la, temperaturen_moskau)
 
 # Mit verschiedenen Funktionen können wir den Datensatz darstellen
 nrow(temperaturen) # Anzahl der Zeilen des Datensatzes
-ncol(temperaturen) # Anzahl der Spalten des Datensatzes
-dim(temperaturen) # Anzahl der Zeilen und Spalten 
-str(temperaturen) # Struktur des Datensates
-head(temperaturen, n = 2) # Zwei Funktionsargumente, n ist die Anzahl der Zeilen, welche angezeigt werden sollen
-tail(temperaturen, n = 2) 
-colnames(temperaturen) # Spaltennamen
-class(temperaturen) # Klasse des Objekts (in diesem Fall `data.frame`)
+```
 
+```
+## [1] 8
+```
+
+```r
+ncol(temperaturen) # Anzahl der Spalten des Datensatzes
+```
+
+```
+## [1] 2
+```
+
+```r
+dim(temperaturen) # Anzahl der Zeilen und Spalten 
+```
+
+```
+## [1] 8 2
+```
+
+```r
+str(temperaturen) # Struktur des Datensates
+```
+
+```
+## 'data.frame':	8 obs. of  2 variables:
+##  $ temperaturen_la    : num  18 22 26 26 25 24 23 22
+##  $ temperaturen_moskau: num  16 14 18 8 8 12 12 13
+```
+
+```r
+head(temperaturen, n = 2) # Zwei Funktionsargumente, n ist die Anzahl der Zeilen, welche angezeigt werden sollen
+```
+
+```
+## # A tibble: 2 x 2
+##   temperaturen_la temperaturen_moskau
+## *           <dbl>               <dbl>
+## 1              18                  16
+## 2              22                  14
+```
+
+```r
+tail(temperaturen, n = 2) 
+```
+
+```
+## # A tibble: 2 x 2
+##   temperaturen_la temperaturen_moskau
+## *           <dbl>               <dbl>
+## 1              23                  12
+## 2              22                  13
+```
+
+```r
+colnames(temperaturen) # Spaltennamen
+```
+
+```
+## [1] "temperaturen_la"     "temperaturen_moskau"
+```
+
+```r
+class(temperaturen) # Klasse des Objekts (in diesem Fall `data.frame`)
+```
+
+```
+## [1] "data.frame"
 ```
 
 ## Operationen mit Datensätzen (data.frames)
@@ -348,12 +466,12 @@ In diesem Fall ist das Ergebnis ein Vektor mit den Daten aus der abgefragten Spa
 
 Die `$`-Notation ermöglicht es uns nicht nur, auf einzelne Spalten zurückzugreifen, sondern auch neue Spalten zu erstellen.
 
-```{r, eval=F}
+
+```r
 data.frame$neue_spalte <- x 
 # wobei x ein Vektor mit neuen Daten ist, z.B. das Datum der entsprechenden Tage 
 
 temperaturen$temperaturen_kairo <- c(36, 35, 37, 37, 36, 35, 34, 34)
-
 ```
 
 ## Importieren eines Datensatzes
@@ -372,13 +490,25 @@ Wir verwenden in diesem Tutorial den [Titanic Datensatz](https://www.kaggle.com/
 
 ![Headline of THE NEW YORK HERALD 15th of April 1912](img/titanic-new-york-herald.jpeg)
 
-```{r}
 
+```r
 titanic <- read.csv("data/titanic.csv")
 
 library(tidyverse)
 head(titanic)
+```
 
+```
+## # A tibble: 6 x 14
+##   pclass survived name  sex     age sibsp parch ticket  fare cabin embarked
+## *  <int>    <int> <fct> <fct> <dbl> <int> <int> <fct>  <dbl> <fct> <fct>   
+## 1      1        1 Alle… fema… 29        0     0 24160  211.  B5    S       
+## 2      1        1 Alli… male   0.92     1     2 113781 152.  C22 … S       
+## 3      1        0 Alli… fema…  2        1     2 113781 152.  C22 … S       
+## 4      1        0 Alli… male  30        1     2 113781 152.  C22 … S       
+## 5      1        0 Alli… fema… 25        1     2 113781 152.  C22 … S       
+## 6      1        1 Ande… male  48        0     0 19952   26.6 E12   S       
+## # ... with 3 more variables: boat <int>, body <int>, home.dest <fct>
 ```
 
 Diese spezielle R-Syntax erlaubt es, auf einzelne Spalten eines Datensatzes zuzugreifen.
@@ -392,14 +522,13 @@ Das Resultat ist ein neuer Datensatz, ausschließlich mit den Zeilen und Spalten
 
 ## Auswählen von Zeilen und Spalten
 
-```{r auswaehlen, eval = FALSE}
 
+```r
 titanic[, "age"] # Nur Spalte Age
 titanic[1, ] # Nur erste Zeile
 titanic[c(1, 2), c("age", "sex")] # gibt die ersten beiden Zeilen und die Spalten Alter und Geschlecht wieder
 titanic[titanic$age <= 18, ] # gibt die ersten beiden Zeilen und die Spalten Alter und Geschlecht wieder
 titanic[titanic$sex == "male", ] # gibt die ersten beiden Zeilen und die Spalten Alter und Geschlecht wieder
-
 ```
 
 **Cave: Oben habe ich geschrieben, das Ergebnis sei eine neuer Datensatz, also ein R-Objekt des Typs `data.frame´.
@@ -413,18 +542,41 @@ Wenn nur eine Spalte ausgewählt wird, ist das Ergebnis ein Vektor**
 - Was ist das durchschnittliche Alter der Männer und der Frauen? 
 - Wie hoch ist der durchschnittliche Ticktpreis (`fare`-Spalte)
 
-```{r}
+
+```r
 # Anzahl unter 18-jähriger Passagiere
 nrow(titanic[titanic$age < 18, ])
+```
 
+```
+## [1] 417
+```
+
+```r
 # Durchschnittlicher Alter Herren
 mean(titanic$age[titanic$sex == "male"], na.rm = TRUE)
+```
+
+```
+## [1] 30.58523
+```
+
+```r
 # Durchschnittliches Alter Damen
 mean(titanic$age[titanic$sex == "female"], na.rm = TRUE)
+```
 
+```
+## [1] 28.68709
+```
+
+```r
 # Durchschnittliche Ticketpreis
 mean(titanic$fare, na.rm = TRUE)
+```
 
+```
+## [1] 33.29548
 ```
 
 
@@ -458,7 +610,8 @@ Die Funktion heißt `read_csv` (nicht verwechseln mit der Funktion `read.csv` di
 Die Dokumentation erhalten wir durch `?read_csv`.
 
 
-```{r}
+
+```r
 library(tidyverse)
 titanic <- read_csv("data/titanic.csv")
 ```
@@ -476,20 +629,91 @@ Speichern Sie den jeweiligen Datensatz in einer Variable.
 
 Berechnen Sie den Mittelwert des Alters und vergleichen Sie die Ergebnisse.
 
-```{r}
+
+```r
 # einlesen des SPSS Datensatzes mit dem haven Paket
 titanic_sav <- haven::read_sav(file = "data/titanic.sav")
 head(titanic_sav) # ersten sechs Zeilen des Datensatzes
-summary(titanic_sav) # Zusammenfassung des Datensatzes
+```
 
+```
+## # A tibble: 6 x 14
+##   pclass survived name  sex     age sibsp parch ticket  fare cabin embarked
+##    <dbl>    <dbl> <chr> <chr> <dbl> <dbl> <dbl> <chr>  <dbl> <chr> <chr>   
+## 1      1        1 Alle… fema… 29        0     0 24160  211.  B5    S       
+## 2      1        1 Alli… male   0.92     1     2 113781 152.  C22 … S       
+## 3      1        0 Alli… fema…  2        1     2 113781 152.  C22 … S       
+## 4      1        0 Alli… male  30        1     2 113781 152.  C22 … S       
+## 5      1        0 Alli… fema… 25        1     2 113781 152.  C22 … S       
+## 6      1        1 Ande… male  48        0     0 19952   26.6 E12   S       
+## # ... with 3 more variables: boat <chr>, body <dbl>, home.dest <chr>
+```
+
+```r
+summary(titanic_sav) # Zusammenfassung des Datensatzes
+```
+
+```
+##      pclass         survived         name               sex           
+##  Min.   :1.000   Min.   :0.000   Length:1309        Length:1309       
+##  1st Qu.:2.000   1st Qu.:0.000   Class :character   Class :character  
+##  Median :3.000   Median :0.000   Mode  :character   Mode  :character  
+##  Mean   :2.295   Mean   :0.382                                        
+##  3rd Qu.:3.000   3rd Qu.:1.000                                        
+##  Max.   :3.000   Max.   :1.000                                        
+##                                                                       
+##       age            sibsp            parch          ticket         
+##  Min.   : 0.17   Min.   :0.0000   Min.   :0.000   Length:1309       
+##  1st Qu.:21.00   1st Qu.:0.0000   1st Qu.:0.000   Class :character  
+##  Median :28.00   Median :0.0000   Median :0.000   Mode  :character  
+##  Mean   :29.88   Mean   :0.4989   Mean   :0.385                     
+##  3rd Qu.:39.00   3rd Qu.:1.0000   3rd Qu.:0.000                     
+##  Max.   :80.00   Max.   :8.0000   Max.   :9.000                     
+##  NA's   :263                                                        
+##       fare            cabin             embarked        
+##  Min.   :  0.000   Length:1309        Length:1309       
+##  1st Qu.:  7.896   Class :character   Class :character  
+##  Median : 14.454   Mode  :character   Mode  :character  
+##  Mean   : 33.295                                        
+##  3rd Qu.: 31.275                                        
+##  Max.   :512.329                                        
+##  NA's   :1                                              
+##      boat                body        home.dest        
+##  Length:1309        Min.   :  1.0   Length:1309       
+##  Class :character   1st Qu.: 72.0   Class :character  
+##  Mode  :character   Median :155.0   Mode  :character  
+##                     Mean   :160.8                     
+##                     3rd Qu.:256.0                     
+##                     Max.   :328.0                     
+##                     NA's   :1188
+```
+
+```r
 # einlesen des Excel Datensatzes
 titanic_xlsx <- readxl::read_xlsx("data/titanic.xlsx")
 
 # Berechnen der Mittelwerte des Alters in der Spalte `age`  
 mean(titanic$age, na.rm = TRUE)
-mean(titanic_sav$age, na.rm = TRUE)
-mean(titanic_xlsx$age, na.rm = TRUE)
+```
 
+```
+## [1] 29.88114
+```
+
+```r
+mean(titanic_sav$age, na.rm = TRUE)
+```
+
+```
+## [1] 29.88114
+```
+
+```r
+mean(titanic_xlsx$age, na.rm = TRUE)
+```
+
+```
+## [1] 29.88114
 ```
 
 </div>
@@ -511,24 +735,46 @@ Die fünf zentralen Funktionen sind Verben, die ausdrücken, was die jeweilige F
 
 *Umrechnung der Fahrpreises*
 
-```{r}
+
+```r
 titanic %>% 
   mutate(fare = fare * 11.25) %>%
   arrange(fare) %>% tail
 ```
 
+```
+## # A tibble: 6 x 14
+##   pclass survived name  sex     age sibsp parch ticket  fare cabin embarked
+##    <int>    <int> <chr> <chr> <dbl> <int> <int> <chr>  <dbl> <chr> <chr>   
+## 1      1        1 Fort… fema…  60       1     4 19950  2959. C23 … S       
+## 2      1        1 Card… male   36       0     1 PC 17… 5764. B51 … C       
+## 3      1        1 Card… fema…  58       0     1 PC 17… 5764. B51 … C       
+## 4      1        1 Lesu… male   35       0     0 PC 17… 5764. B101  C       
+## 5      1        1 Ward… fema…  35       0     0 PC 17… 5764. <NA>  C       
+## 6      3        0 Stor… male   60.5     0     0 3701     NA  <NA>  S       
+## # ... with 3 more variables: boat <int>, body <int>, home.dest <chr>
+```
+
 
 *Die ältesten 3 überlebenden Passagiere*
 
-```{r}
 
+```r
 titanic %>% 
   mutate(survived = if_else(survived == 1, TRUE, FALSE)) %>% 
   filter(survived) %>% 
   select(name, age, pclass) %>% 
   arrange(age) %>% 
   tail(n = 3)
+```
 
+```
+## # A tibble: 3 x 3
+##   name                                                age pclass
+##   <chr>                                             <dbl>  <int>
+## 1 Shine, Miss. Ellen Natalia                           NA      3
+## 2 Smyth, Miss. Julia                                   NA      3
+## 3 Thorneycroft, Mrs. Percival (Florence Kate White)    NA      3
 ```
 
 <div class="task">
@@ -539,12 +785,28 @@ Welche Passagiere haben den Höchsten Preis für die Reise bezahlt?
 
 Geben Sie den Namen und den Fahrpreis in der finale Tablle aus.
 
-```{r}
+
+```r
 titanic %>% 
   select(name, fare) %>% 
   arrange(desc(fare)) %>% 
   head(n = 10)
+```
 
+```
+## # A tibble: 10 x 2
+##    name                                                             fare
+##    <chr>                                                           <dbl>
+##  1 Cardeza, Mr. Thomas Drake Martinez                               512.
+##  2 Cardeza, Mrs. James Warburton Martinez (Charlotte Wardle Drake)  512.
+##  3 Lesurer, Mr. Gustave J                                           512.
+##  4 Ward, Miss. Anna                                                 512.
+##  5 Fortune, Miss. Alice Elizabeth                                   263 
+##  6 Fortune, Miss. Ethel Flora                                       263 
+##  7 Fortune, Miss. Mabel Helen                                       263 
+##  8 Fortune, Mr. Charles Alexander                                   263 
+##  9 Fortune, Mr. Mark                                                263 
+## 10 Fortune, Mrs. Mark (Mary McDougald)                              263
 ```
 
 [Extrainfos](https://www.encyclopedia-titanica.org/titanic-survivor/thomas-cardeza.html)
@@ -555,11 +817,17 @@ titanic %>%
 
 - Zusammenfassen durch den Mittelwert - `summarise`
 
-```{r}
 
+```r
 titanic %>% 
   summarise(age_mean = mean(age, na.rm = T))
+```
 
+```
+## # A tibble: 1 x 1
+##   age_mean
+##      <dbl>
+## 1     29.9
 ```
 
 *Was ist das durchschnittliche Alter der männlichen und weiblichen Passagiere und was ist die Standardabeichung des Alters?*
@@ -567,10 +835,19 @@ titanic %>%
 - Gruppen erstellen entsprechend des Geschlechts - `group_by`
 - Zusammenfassen durch den Mittelwert - `summarise`
 
-```{r}
+
+```r
 titanic %>% 
   group_by(sex) %>% 
   summarise(age_mean = mean(age, na.rm = T), age_sd = sd(age, na.rm = T), n = n())
+```
+
+```
+## # A tibble: 2 x 4
+##   sex    age_mean age_sd     n
+##   <chr>     <dbl>  <dbl> <int>
+## 1 female     28.7   14.6   466
+## 2 male       30.6   14.3   843
 ```
 
 <div class="task">
@@ -580,11 +857,20 @@ titanic %>%
 Was ist der durchschnittliche Fahrpreis und die jeweilige Streuung für die jeweiligen Klassen?
 
 
-```{r}
+
+```r
 titanic %>% 
   group_by(pclass) %>% 
   summarise(durchschnittl_fahrpreis = mean(fare, na.rm = TRUE))
- 
+```
+
+```
+## # A tibble: 3 x 2
+##   pclass durchschnittl_fahrpreis
+##    <int>                   <dbl>
+## 1      1                    87.5
+## 2      2                    21.2
+## 3      3                    13.3
 ```
 </div>
 
@@ -596,14 +882,23 @@ Der *New York Herold* titelte am 15.April 1912: *The Titanic sinks with 1800 on 
 
 Finden sie heraus, ob diese Schlagzeile aus den Daten nachvollziehbar ist, indem Sie die Funktionen des `tidyverse` anwenden.
 
-```{r}
 
+```r
 titanic %>%  
   group_by(survived, sex) %>%  
   summarise(n = n()) %>%  
   ungroup() %>%  
   mutate(prop = n / sum(n)) 
+```
 
+```
+## # A tibble: 4 x 4
+##   survived sex        n   prop
+##      <int> <chr>  <int>  <dbl>
+## 1        0 female   127 0.0970
+## 2        0 male     682 0.521 
+## 3        1 female   339 0.259 
+## 4        1 male     161 0.123
 ```
 
 </div>
@@ -617,7 +912,8 @@ Nun sollen Sie die tatsächliche Auslasung der Rettungsboote auf der Titanic ber
 
 Die Informationen ob und in welches Rettungsboot ein Gast bestieg ist in der Spalte `boat` des Titanic Datensatzes vermerkt.
 
-```{r}
+
+```r
 # auslastung pro boot 
 auslastung_pro_boot <- titanic %>%  
   filter(!is.na(boat)) %>%  
@@ -630,7 +926,39 @@ auslastung_aller_boote <- auslastung_pro_boot %>%
   summarise(auslastung = mean(auslastung)) 
  
 print(auslastung_pro_boot) 
+```
+
+```
+## # A tibble: 16 x 3
+##     boat     n auslastung
+##    <int> <int>      <dbl>
+##  1     1     5     0.0769
+##  2     2    13     0.2   
+##  3     3    26     0.4   
+##  4     4    31     0.477 
+##  5     5    30     0.462 
+##  6     6    20     0.308 
+##  7     7    23     0.354 
+##  8     8    24     0.369 
+##  9     9    25     0.385 
+## 10    10    29     0.446 
+## 11    11    25     0.385 
+## 12    12    19     0.292 
+## 13    13    42     0.646 
+## 14    14    33     0.508 
+## 15    15    38     0.585 
+## 16    16    23     0.354
+```
+
+```r
 print(auslastung_aller_boote) 
+```
+
+```
+## # A tibble: 1 x 1
+##   auslastung
+##        <dbl>
+## 1      0.390
 ```
 
 </div>
@@ -652,26 +980,37 @@ An dieser Stelle wird ein kurzer Ausblick auf das Basispaket in gegeben und zwei
  
 ### XY-Plots 
  
-```{r, eval=TRUE} 
+
+```r
 par(mfrow = c(1,2)) 
 # Bivariate Darstellung des Alters und des Preises 
 plot(titanic$age, titanic$fare) 
 plot(titanic$age, titanic$fare, col = titanic$pclass) 
+```
+
+<img src="workbook-rstats-gmds18-solution_files/figure-html/unnamed-chunk-19-1.png" style="display: block; margin: auto;" />
+
+```r
 par(mfrow = c(1, 1)) 
- 
-``` 
+```
  
 ### Histogramme 
  
-```{r, eval=TRUE} 
+
+```r
 hist(titanic$age) 
-``` 
+```
+
+<img src="workbook-rstats-gmds18-solution_files/figure-html/unnamed-chunk-20-1.png" style="display: block; margin: auto;" />
  
 ### Boxplots 
  
-```{r, eval=TRUE} 
+
+```r
 boxplot(titanic$age) 
-``` 
+```
+
+<img src="workbook-rstats-gmds18-solution_files/figure-html/unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
  
 # Rückblick und Ausblick
 
@@ -685,7 +1024,8 @@ boxplot(titanic$age)
 
 Weitere statistische Operationen wie z.B. Konfidenzintervalle und Inferenzstatistik (t.tests)
 
-```{r}
+
+```r
 titanic %>% 
   group_by(sex) %>% 
   filter(age >= 18) %>% 
@@ -695,11 +1035,20 @@ titanic %>%
   spread(key = name, value = value)
 ```
 
+```
+## # A tibble: 2 x 4
+##   sex    Lower  Mean Upper
+##   <chr>  <dbl> <dbl> <dbl>
+## 1 female  31.9  33.2  34.5
+## 2 male    32.6  33.6  34.5
+```
+
 ![](img/tut1-example-plot.png)
 <hr>
 ![](img/tut1-r-decision-tree.png)
 
-```{r}
+
+```r
 library(rpart) # Paket mit dem Entscheidungsbäume erstellt werden können
 library(rattle) # Paket mit dem Entscheidungsbäume visualisiert werden können
 
@@ -714,12 +1063,27 @@ titanic %>%
   theme_bw() +
   theme(axis.title.x = element_blank(), 
         axis.text = element_text(size = 12))
+```
 
+```
+## Warning: Removed 68 rows containing non-finite values (stat_summary).
+
+## Warning: Removed 68 rows containing non-finite values (stat_summary).
+```
+
+```
+## Warning: Removed 68 rows containing missing values (geom_point).
+```
+
+<img src="workbook-rstats-gmds18-solution_files/figure-html/unnamed-chunk-23-1.png" style="display: block; margin: auto;" />
+
+```r
 train <- titanic %>% select(survived, sex, age, pclass)
 decision_tree <- rpart(survived ~ .,
                  data = train,
                  method ="class")
 
 fancyRpartPlot(decision_tree, main = "", sub = "Welche Personen haben den Titanic-Untergang überlebt?")
-
 ```
+
+<img src="workbook-rstats-gmds18-solution_files/figure-html/unnamed-chunk-23-2.png" style="display: block; margin: auto;" />
